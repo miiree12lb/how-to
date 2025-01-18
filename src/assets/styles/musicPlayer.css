@@ -1,0 +1,181 @@
+#songs-list {
+    border-radius: 10px;
+    border: solid 1px #94692D;
+    background-color: black;
+    margin-top: 10px;
+    overflow-y: auto;
+    width: 100%;
+    height: 30vw;
+}
+
+#songs-list-and-autoplay{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input[type="checkbox"] {
+    accent-color: #94692D;
+}
+
+.song-holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin: 10px;
+    cursor: pointer;
+    padding-left: 10px;
+    border-radius: 10px;
+}
+
+.song-holder:hover {
+    background-color: #292929;
+}
+
+.song-title, .song-artist {
+    margin: 0;
+}
+
+.song-artist {
+    margin-bottom: 10px;
+}
+
+.song-number {
+    min-width: 30px;
+}
+
+#music {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
+
+.music-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrows {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 4vw;
+}
+
+.arrows:hover {
+    background-color: transparent;
+    color: #94692D;
+}
+
+.song-holder.active {
+    background-color: #FF4136;
+}
+
+.song-holder.active h4 {
+    color: #292929;
+}
+
+#current-title, #current-artist {
+    color: white;
+    margin: 0;
+}
+
+#current-image-holder {
+    margin: 10px;
+    width: 30vw;
+    height: 30vw;
+    position: relative;
+}
+
+#current-image {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+input[type="range"] {
+    accent-color: #94692D;
+    width: 80%;
+}
+
+.control-btn {
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+  
+.control-btn:hover {
+    color: #94692D;
+    background-color: transparent;
+}
+  
+.control-btn svg {
+    pointer-events: none;
+}
+
+.time-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#spotify-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+@media screen and (max-width: 870px) {
+    #music {
+        flex-direction: column;
+        justify-content: baseline;
+        gap: 10px;
+        min-width: 80vw;
+        max-width: 80vw;
+    }
+
+    #songs-list {
+        margin-top: 0;
+        height: 50vw;
+    }
+
+    #current-image-holder {
+        min-width: 80vw;
+        max-width: 80vw;
+        min-height: 80vw;
+        max-height: 80vw;
+        width: 100%;
+        height: 100%;
+    }
+
+    .music-controls {
+        min-width: 100%;
+        max-width: 100%;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+    }
+};

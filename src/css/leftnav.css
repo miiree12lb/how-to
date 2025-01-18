@@ -1,0 +1,75 @@
+#left-nav {
+    top: 0;
+    left: 0;
+    border-right: 1px solid #94692D;
+    width: 15vw;
+    padding: 10px;
+}
+
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #292929;
+    border: solid 1px #94692D;
+    color: #94692D;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.chip img {
+    float: left;
+    margin: -10px 10px 0 -35px;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.chip a {
+    color: #94692D;
+}
+
+.list {
+    margin-top: 20px;
+}
+
+.list a:hover {
+    color:#94692D;
+}
+
+.left-nav-item.selected {
+    color:#94692D;
+}
+
+input[type="text"] {
+    border-radius: 10px;
+    padding: 10px
+}
+
+@media only screen and (max-width: 800px) {
+    .chip img {
+        height: 50px;
+        width: 50px;
+        margin: -5px 5px 0 -25px;
+    }
+
+    .chip {
+        padding: 0 20px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 25px;
+        align-items: center;
+        font-size: 3vw;
+    }
+
+    #left-nav {
+        width: 50px;
+        padding: 5px;
+    }
+}

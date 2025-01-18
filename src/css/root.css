@@ -1,0 +1,82 @@
+body {
+    background-color:#151515;
+    font-family: "Segoe UI", Verdana, sans-serif;
+    color: white;
+}
+
+.view {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.how-to {
+    width: 70vw;
+}
+
+h1, h2, h3, h4 {
+    color: #94692D;
+}
+
+.item {
+    padding: 20px;
+    border: 1px solid #94692D;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.how-to-button button {
+    color: black;
+    background-color: #94692D;
+    border-radius: 10px;
+    padding: 10px 30px;
+}
+
+.how-to-button button:hover {
+    background-color: #FF4136;;
+}
+
+.how-to-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.item-page {
+    width: 70vw;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.tab {
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.tab.selected {
+    background-color: #94692D;
+    color: black;
+}
+
+.code {
+    width: 70vw;
+    height: 70vh;
+    overflow: auto;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #94692D;
+    margin-top: 0;
+    background-color: #292929;
+}
+
+@media only screen and (max-width: 800px) {
+    .how-to, .item {
+        width: 75vw;
+    }
+}
