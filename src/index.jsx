@@ -8,6 +8,7 @@ import { HashRouter, Route, Routes, Navigate } from 'react-router-dom';
 import HowTo from './HowTo.jsx';
 import MusicPlayer from './assets/sourceCodes/MusicPlayer.jsx';
 import WorldMap from './assets/sourceCodes/WorldMap.jsx';
+import CircularProgress from './assets/sourceCodes/CircularProgress.jsx';
 
 export default function Root() {
     const [selectedItem, setSelectedItem] = useState(null);
@@ -465,7 +466,90 @@ export default function WorldMap() {
   );
 }            
             `,
-        }
+        },
+
+        {
+            title: 'Circular Progress',
+            component: <CircularProgress />,
+            css: `
+.circular-progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.circular-progress {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: conic-gradient(#94692D 0%, #e6e6e6 100%);
+}
+
+.circular-progress-inner {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background-color: #151515;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    flex-direction: column;
+}
+
+.progress-text {
+    font-size: 30px;
+    font-weight: bold;
+    color: #d3d3d3;
+}
+
+.progress-text p {
+    margin:0;
+    text-align: center;
+    font-weight: normal;
+    font-size: 15px;
+}        
+            `,
+            jsx: `
+import React, { useState, useEffect } from "react";
+import "./css/circularProgress.css"; // Import CSS for styling
+
+const CircularProgress = ({ credits, totalCredits }) => {
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        const percentage = (credits / totalCredits) * 100;
+        setProgress(percentage);
+    }, [credits, totalCredits]);
+
+    return (
+        <div className="circular-progress-container">
+            <div
+                className="circular-progress"
+                style={{
+                    background: \`conic-gradient(#94692D \${progress}%, #e6e6e6 \${progress}% 100%)\`,
+                }}
+            >
+                <div className="circular-progress-inner">
+                    <div className="progress-text">
+                        {credits}/{totalCredits}
+                        <p>credits</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default CircularProgress;            
+            `
+        },
     ];
 
     return (

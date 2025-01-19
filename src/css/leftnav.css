@@ -1,9 +1,18 @@
-#left-nav {
+.left-nav {
     top: 0;
     left: 0;
-    border-right: 1px solid #94692D;
+    background-color: #292929;
+    height: 100vh;
+    overflow: auto;
     width: 15vw;
     padding: 10px;
+    position: fixed;
+    z-index: 100000;
+}
+
+.left-nav.list {
+    width: 100vw;
+    margin-top: 0;
 }
 
 .chip {
@@ -33,6 +42,7 @@ a {
 
 .chip a {
     color: #94692D;
+    font-size: small;
 }
 
 .list {
@@ -49,7 +59,14 @@ a {
 
 input[type="text"] {
     border-radius: 10px;
-    padding: 10px
+    padding: 10px;
+    width: 80%;
+}
+
+@media only screen and (max-width: 950px) {
+    .chip a {
+        font-size: x-small;
+    }
 }
 
 @media only screen and (max-width: 800px) {
@@ -68,8 +85,24 @@ input[type="text"] {
         font-size: 3vw;
     }
 
-    #left-nav {
+    .left-nav {
         width: 50px;
         padding: 5px;
+    }
+
+    .icons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .search-bar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    input[type="text"] {
+        width: 75%;
     }
 }
