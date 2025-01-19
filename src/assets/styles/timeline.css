@@ -1,0 +1,43 @@
+.timeline-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    overflow-x: auto; /* Enable horizontal scrolling */
+}
+  
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Columns for years */
+    gap: 10px;
+    position: relative;
+    align-items: center;
+}
+  
+.timeline-grid-item {
+    background-color: #6cb2eb;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 20px 10px;
+}
+  
+.timeline-grid-item.work {
+    background-color: #94692d;
+}
+  
+.timeline-grid-item.volunteer {
+    background-color: black;
+    border:#94692d solid 1px;
+}
+  
+.timeline-year {
+    border: solid 1px #94692d;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: bold;
+}

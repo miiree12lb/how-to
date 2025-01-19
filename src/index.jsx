@@ -9,6 +9,7 @@ import HowTo from './HowTo.jsx';
 import MusicPlayer from './assets/sourceCodes/MusicPlayer.jsx';
 import WorldMap from './assets/sourceCodes/WorldMap.jsx';
 import CircularProgress from './assets/sourceCodes/CircularProgress.jsx';
+import Timeline from './assets/sourceCodes/Timeline.jsx';
 
 export default function Root() {
     const [selectedItem, setSelectedItem] = useState(null);
@@ -548,6 +549,113 @@ const CircularProgress = ({ credits, totalCredits }) => {
 };
 
 export default CircularProgress;            
+            `
+        },
+        {
+            title: "Timeline",
+            component: <Timeline />,
+            css: `
+.timeline-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    overflow-x: auto; /* Enable horizontal scrolling */
+}
+  
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Columns for years */
+    gap: 10px;
+    position: relative;
+    align-items: center;
+}
+  
+.timeline-grid-item {
+    background-color: #6cb2eb;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 20px 10px;
+}
+  
+.timeline-grid-item.work {
+    background-color: #94692d;
+}
+  
+.timeline-grid-item.volunteer {
+    background-color: black;
+    border:#94692d solid 1px;
+}
+  
+.timeline-year {
+    border: solid 1px #94692d;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: bold;
+}
+            `,
+            jsx: `
+import React, { useState } from "react";
+import "../styles/timeline.css";
+
+export default function Experience() {
+  const currentYear = new Date().getFullYear();
+
+  const experiences = [
+    { title: "M.A.C.S", startTime: 2024, endTime: 2024, type: "work"},
+    { title: "GoStudent", startTime: 2022, endTime: currentYear, type: "work" },
+    { title: "OIFem", startTime: 2022, endTime: currentYear, type: "volunteer" },
+    { title: "Repair of Computers", startTime: 2021, endTime: 2021, type: "volunteer"},
+    { title: "Repair of Phones", startTime: 2020, endTime: 2020, type: "volunteer" },
+  ];
+
+  const minYear = Math.min(...experiences.map((exp) => exp.startTime));
+  const maxYear = Math.max(...experiences.map((exp) => exp.endTime));
+  const totalYears = maxYear - minYear + 1;
+
+  return (
+    <>
+      <h1>Timeline</h1>
+      <div className="timeline-container">
+        <div className="timeline-grid">
+          {experiences.map((exp, index) => {
+            const startColumn = exp.startTime - minYear + 1;
+            const spanColumns = exp.endTime - exp.startTime + 1;
+
+            return (
+              <div
+                key={index}
+                className={\`timeline-grid-item \${exp.type}\`}
+                style={{
+                  gridColumn: \`\${startColumn} / span \${spanColumns}\`,
+                  gridRow: \`\${index + 1}\`,
+                }}
+              >
+                {exp.title}
+              </div>
+            );
+          })}
+
+          {/* Years row */}
+          {Array.from({ length: totalYears }, (_, i) => (
+            <div
+              key={\`year-\${i}\`}
+              className="timeline-year"
+              style={{ gridColumn: \`\${i + 1}\`, gridRow: experiences.length + 1 }}
+            >
+              {minYear + i}
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}            
             `
         },
     ];

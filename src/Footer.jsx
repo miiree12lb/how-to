@@ -26,7 +26,7 @@ export default function Footer(){
                     <Link to="https://www.linkedin.com/in/mireia-lopez-bruch-0b7768241/" target="_blank" rel="noopener noreferrer"><img alt="linkedin" src={linkedin} width="50" height="50" /></Link>  
                 </div>
                 <div id="footer-text">
-                    © Mireia Lopez Bruch - 2024
+                    © Mireia Lopez Bruch - 2025
                 </div>
                     
             </div>
