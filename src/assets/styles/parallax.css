@@ -1,0 +1,25 @@
+.parallax {
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parallax button {
+    font-size: xx-large;
+    color:#94692d;
+    background-color:#151515;
+    padding: 10px 30px;
+    border: solid 3px #94692d;
+    cursor: pointer;
+}
+
+.parallax button:hover {
+    background-color:#94692d;
+    color: #151515;
+}

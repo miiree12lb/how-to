@@ -10,6 +10,7 @@ import MusicPlayer from './assets/sourceCodes/MusicPlayer.jsx';
 import WorldMap from './assets/sourceCodes/WorldMap.jsx';
 import CircularProgress from './assets/sourceCodes/CircularProgress.jsx';
 import Timeline from './assets/sourceCodes/Timeline.jsx';
+import Parallax from './assets/sourceCodes/Parallax.jsx';
 
 export default function Root() {
     const [selectedItem, setSelectedItem] = useState(null);
@@ -603,7 +604,7 @@ export default CircularProgress;
 import React, { useState } from "react";
 import "../styles/timeline.css";
 
-export default function Experience() {
+export default function Timeline() {
   const currentYear = new Date().getFullYear();
 
   const experiences = [
@@ -656,6 +657,71 @@ export default function Experience() {
     </>
   );
 }            
+            `
+        }, 
+        {
+            title: "Parallax",
+            component: <Parallax />,
+            css:`
+.parallax {
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parallax button {
+    font-size: xx-large;
+    color:#94692d;
+    background-color:#151515;
+    padding: 10px 30px;
+    border: solid 3px #94692d;
+    cursor: pointer;
+}
+
+.parallax button:hover {
+    background-color:#94692d;
+    color: #151515;
+} 
+            `,
+            jsx:`
+import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
+//import your images
+import northernLights from "../images/landscapes/auroraBoreal.png";
+import sunset from "../images/landscapes/sunset.png";
+import nature from "../images/landscapes/nature.png";
+//import your css file
+import "../styles/parallax.css";
+
+export default function Parallax() {
+    const parallax_contents = [
+        { title: "Northern Lights", img: northernLights },
+        { title: "Sunset", img: sunset },
+        { title: "Nature", img: nature}
+        //add more images and titles as needed...
+    ];
+
+    return (
+        <>
+            {parallax_contents.map((p) => (
+                <div className="parallax"
+                style={{
+                    backgroundImage: \`url(\${p.img})\`
+                }}
+            >
+                
+                <button>{p.title}</button>
+            </div>
+            ))}
+        </>
+    );
+}
             `
         },
     ];

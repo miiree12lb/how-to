@@ -3,7 +3,6 @@
     left: 0;
     background-color: #292929;
     height: 100vh;
-    overflow: auto;
     width: 15vw;
     padding: 10px;
     position: fixed;
@@ -47,10 +46,15 @@ a {
 
 .list {
     margin-top: 20px;
+    overflow: auto;
 }
 
 .list a:hover {
     color:#94692D;
+}
+
+.left-nav-item {
+    cursor: pointer;
 }
 
 .left-nav-item.selected {
