@@ -10,6 +10,7 @@
         "deploy": "gh-pages -d build"
     },
     "dependencies": {
+        "@leenguyen/react-flip-clock-countdown": "^1.6.1",
         "npm": "^10.2.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
