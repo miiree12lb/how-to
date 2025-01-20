@@ -17,6 +17,7 @@ export default function Parallax() {
 
     return (
         <>
+            <h1>Parallax</h1>
             {parallax_contents.map((p) => (
                 <div className="parallax"
                 style={{
