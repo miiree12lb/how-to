@@ -13,6 +13,7 @@ import Timeline from './assets/sourceCodes/Timeline.jsx';
 import Parallax from './assets/sourceCodes/Parallax.jsx';
 import ImageSlider from './assets/sourceCodes/ImageSlider.jsx';
 import FlipClock from './assets/sourceCodes/FlipClock.jsx';
+import QuoteSlideshow from './assets/sourceCodes/QuoteSlideshow.jsx';
 
 export default function Root() {
     const [selectedItem, setSelectedItem] = useState(null);
@@ -805,6 +806,116 @@ export default function ImageSlider() {
             title: "Flip Clock Countdown",
             component: <FlipClock />,
             css: `
+/* General styles */
+label {
+    margin-right: 10px;
+}
+
+.flip-clock {
+    display: flex;
+    flex-wrap: wrap; /* Enable wrapping on small screens */
+    gap: 20px; /* Adjust spacing */
+    justify-content: center;
+    padding: 20px;
+    max-width: 100%; /* Ensure it doesn't exceed screen width */
+}
+
+.time-holder {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Flip number styles */
+.flip-number {
+    display: flex;
+    flex-direction: row; /* Place two digits in a row */
+    gap: 5px;
+}
+
+/* Flip digit styles */
+.flip-digit {
+    position: relative;
+    width: 40px;
+    height: 60px;
+    perspective: 1000px; /* Creates the 3D perspective */
+}
+
+.flip-digit .digit-front,
+.flip-digit .digit-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    background-color: #94692D;
+    color: white;
+    border-radius: 5px;
+    transform-origin: center; /* Flip from the middle of the digit */
+    transition: transform 0.6s ease-in-out;
+
+    /* Backface visibility for browsers */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-digit .digit-back {
+    transform: rotateX(90deg);
+}
+
+.flip-digit.flipping .digit-front {
+    transform: rotateX(-90deg);
+}
+
+.flip-digit.flipping .digit-back {
+    transform: rotateX(0deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .flip-clock {
+        gap: 15px;
+    }
+
+    .flip-digit {
+        width: 30px;
+        height: 45px;
+    }
+
+    .flip-digit .digit-front,
+    .flip-digit .digit-back {
+        font-size: 24px;
+    }
+
+    .time-text {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flip-clock {
+        gap: 10px;
+    }
+
+    .flip-digit {
+        width: 25px;
+        height: 40px;
+    }
+
+    .flip-digit .digit-front,
+    .flip-digit .digit-back {
+        font-size: 18px;
+    }
+
+    .time-text {
+        font-size: 10px;
+    }
+}
 
             `,
             jsx: `
@@ -911,6 +1022,113 @@ export default function FlipClock() {
         </>
     );
 }
+
+            `
+        },
+        {
+            title: "Quote Slideshow",
+            component: <QuoteSlideshow />,
+            css: `
+#quotes_container{
+    background: black;
+    text-align: center;
+    display: flex;
+    border: solid 1px #94692D;
+    border-radius: 10px;
+}
+
+#quote {
+    border-radius: 10px;
+    flex: 1;
+}
+
+#next_quote, #previous_quote {
+    background-color: transparent;
+    border: none;
+    color: #94692D;
+    border-radius: 10px;
+}
+
+#next_quote:hover, #previous_quote:hover {
+    color: #FF4136;
+}
+
+#autoplay_toggle {
+    margin-top: 20px;
+}
+
+#autoplay_toggle input {
+    margin-right: 10px;
+}
+            `,
+            jsx: `
+import React, { useState, useEffect } from "react";
+import "../styles/quotes.css";
+
+const QuoteSlideshow = () => {
+    const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+    const [autoPlay, setAutoPlay] = useState(false);
+    const quotes = [
+        { text: 'Everybody\'s a genius. But if you judge a fish by its ability to climb a tree, it will live its whole  life believing that it is stupid.', author: 'Albert Einstein' },
+        { text: 'No és el pas del temps qui et porta a créixer són els seus cops.', author: 'Txarango' },
+        { text: 'On ne voit bien qu\'avec le coeur. L\'essentiel est invisuble pour les yeux.', author: 'Antoine de Saint-Exupéry' },
+        { text: 'Hay cosas encerradas dentro de los muros que, si salieran de pronto a la calle y gritaran, llenarían el mundo.', author: 'Federico García Lorca'}
+    ];
+
+    const nextQuote = () => {
+        setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
+    };
+
+    const prevQuote = () => {
+        setCurrentQuoteIndex((prevIndex) => (prevIndex - 1 + quotes.length) % quotes.length);
+    };
+
+    // Start autoplay if enabled
+    useEffect(() => {
+        let interval;
+        if (autoPlay) {
+            interval = setInterval(nextQuote, 5000); // Change quote every 5 seconds
+        } else {
+            clearInterval(interval); // Stop autoplay when disabled
+        }
+
+        return () => clearInterval(interval); // Cleanup on unmount or toggle
+    }, [autoPlay]);
+
+    const currentQuote = quotes[currentQuoteIndex];
+
+    return (
+        <>
+            <h1>Quote Slideshow</h1>
+            <div id="autoplay_toggle">
+                <label>
+                    <input
+                        type="checkbox"
+                        checked={autoPlay}
+                        onChange={() => setAutoPlay(!autoPlay)}
+                    />
+                    Autoplay
+                </label>
+            </div>
+            <div id="quotes_container">
+                <button id="previous_quote" onClick={prevQuote}>
+                    &#10094;
+                </button>
+                <div id="quote">
+                    <p>
+                        <i>{currentQuote.text}</i>
+                    </p>
+                    <p>- {currentQuote.author}</p>
+                </div>
+                <button id="next_quote" onClick={nextQuote}>
+                    &#10095;
+                </button>
+            </div>
+        </>
+    );
+};
+
+export default QuoteSlideshow;
 
             `
         },
