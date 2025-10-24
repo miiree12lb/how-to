@@ -1,0 +1,9 @@
+.time-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="range"] {
+    accent-color: #94692D;
+}
