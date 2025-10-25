@@ -1,9 +1,23 @@
+label {
+    margin-right: 10px;
+}
+
 .time-controls {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
 }
 
 input[type="range"] {
+    flex: 1;
     accent-color: #94692D;
+}
+
+#play-pause {
+    color: #94692D;
+}
+
+canvas {
+    height: 100px;
+    width: 100%;
 }
