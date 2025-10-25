@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/how-to/static/css/main.9bc3c9ff.css",
-    "main.js": "/how-to/static/js/main.8ddfaf0b.js",
+    "main.css": "/how-to/static/css/main.5b507e20.css",
+    "main.js": "/how-to/static/js/main.5e79a4a0.js",
     "static/media/Unwritten (Audio) -Natasha Bedingfield.mp3": "/how-to/static/media/Unwritten (Audio) -Natasha Bedingfield.3f4a58e62b85f9302a9d.mp3",
     "static/media/Little Hollywood  Lyrics (Alle Farben feat. Janieck).mp3": "/how-to/static/media/Little Hollywood  Lyrics (Alle Farben feat. Janieck).fb66968d7d124b036e04.mp3",
     "static/media/auroraBoreal.png": "/how-to/static/media/auroraBoreal.147342245f103081ba17.png",
@@ -13,11 +13,11 @@
     "static/media/instagram.svg": "/how-to/static/media/instagram.f1b93ec68f3f311e5c68d6085a9b479c.svg",
     "index.html": "/how-to/index.html",
     "static/media/linkedin.svg": "/how-to/static/media/linkedin.3f6d644cac1e5dd5bb4675ccea3d9ff3.svg",
-    "main.9bc3c9ff.css.map": "/how-to/static/css/main.9bc3c9ff.css.map",
-    "main.8ddfaf0b.js.map": "/how-to/static/js/main.8ddfaf0b.js.map"
+    "main.5b507e20.css.map": "/how-to/static/css/main.5b507e20.css.map",
+    "main.5e79a4a0.js.map": "/how-to/static/js/main.5e79a4a0.js.map"
   },
   "entrypoints": [
-    "static/css/main.9bc3c9ff.css",
-    "static/js/main.8ddfaf0b.js"
+    "static/css/main.5b507e20.css",
+    "static/js/main.5e79a4a0.js"
   ]
 }
